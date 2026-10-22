@@ -7,7 +7,7 @@ import {
   decryptAction,
   obfuscateAction,
   deobfuscateAction,
-} from "@/app/demo-encryption/actions";
+} from "@/lib/security-actions";
 import manifest from "@/app/manifest";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
@@ -155,7 +155,7 @@ describe("E2E Application Workflow Test Suite", () => {
   describe("E2E Next.js Core Routes & Metadata", () => {
     it("should generate compliant PWA Web Manifest", () => {
       const manifestData = manifest();
-      expect(manifestData.name).toBe("Amir App");
+      expect(manifestData.name).toBe("Elemes LMS");
       expect(manifestData.display).toBe("standalone");
       expect(manifestData.start_url).toBe("/");
       expect(manifestData.icons?.length).toBeGreaterThanOrEqual(2);

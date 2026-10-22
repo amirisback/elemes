@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
 import { seoConfig } from "@/lib/seo";
 
-// Add all your static routes here
+// Static application routes for SEO indexing
 const staticRoutes = [
   "", // Homepage
+  "/courses", // Course Catalog
+  "/dashboard", // Student Dashboard
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

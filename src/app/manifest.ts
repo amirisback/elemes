@@ -2,13 +2,13 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Amir App',
-    short_name: 'AmirApp',
-    description: 'Amir App Progressive Web App',
+    name: process.env.NEXT_PUBLIC_APP_NAME || 'Elemes LMS',
+    short_name: 'ElemesLMS',
+    description: 'Elemes LMS — Universal Learning Management System Progressive Web App',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
-    theme_color: '#000000',
+    theme_color: '#0f766e',
     icons: [
       {
         src: '/icon-192x192.svg',

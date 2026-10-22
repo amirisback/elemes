@@ -1,21 +1,16 @@
 ## 🧠 Context
 
 - **Nama Website** Diserahkan ke Ai
-- **Objective:** Membangun website **Warung Kopi Nusantara** — Landing page kedai kopi artisan dengan online ordering.
+- **Objective:** Membangun website **Template LMS** — Learning Management System
 - **Project Base:** Repository ini (`Init-nextjs-app`) — sudah ter-setup dengan Next.js 16, Tailwind CSS v4, TypeScript strict, Serwist PWA
 - **Target Audience:** Dewasa
-- **Tujuan Bisnis:** Menjangkau pasar, memperkenalkan produk dan brand, memudahkan pelanggan melakukan pemesanan.
+- **Tujuan Bisnis:** Template, nanti agar bisa digunakan untuk pembuatan LMS, segala jenis lms, mulai dari LMS untuk sekolah, kampus, pelatihan, dan lain sebagainya, intinya bisa dicustom sesuai dengan kebutuhan
 
 ## 📋 Requirements
 
-### Halaman yang dibutuhkan
-
-1. **Homepage** (`/`) — [Deskripsi konten homepage]
-2. **[Halaman 2]** (`/path`) — [Deskripsi]
-3. **[Halaman 3]** (`/path`) — [Deskripsi]
-
 ### Fitur Utama
-- [ ] 
+
+- [ ] Template LMS
 
 ### Desain & UI
 
@@ -24,5 +19,3 @@
 - **Typography:** [Gunakan Geist (sudah setup) / font lain dari Google Fonts]
 - **Layout:** Mobile-first, responsive
 - **Dark Mode:** Wajib support
-
-### Referensi Web
