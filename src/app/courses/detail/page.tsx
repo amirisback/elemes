@@ -1,7 +1,7 @@
-import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { getCurrentDictionary } from "@/lib/i18n-server";
 import { LMS_COURSES } from "@/data/lms-data";
 import { Navbar } from "@/components/navbar";
@@ -26,9 +26,14 @@ interface PageProps {
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const { id } = await searchParams;
-  const course = LMS_COURSES.find((c) => c.id === id) || LMS_COURSES[0]!;
+  const course = id ? LMS_COURSES.find((c) => c.id === id) : LMS_COURSES[0];
+  if (!course) {
+    return {
+      title: "Kursus Tidak Ditemukan | Elemes LMS",
+    };
+  }
   return {
-    title: `${course.title} — Elemes LMS`,
+    title: `${course.title} | Elemes LMS`,
     description: course.subtitle,
   };
 }
@@ -37,7 +42,10 @@ export default async function CourseDetailPage({ searchParams }: PageProps) {
   const { locale, dict } = await getCurrentDictionary();
   const { id } = await searchParams;
 
-  const course = LMS_COURSES.find((c) => c.id === id) || LMS_COURSES[0]!;
+  const course = id ? LMS_COURSES.find((c) => c.id === id) : LMS_COURSES[0];
+  if (!course) {
+    notFound();
+  }
   const firstLessonId = course.modules[0]?.lessons[0]?.id || "les-1-1";
 
   const formattedPrice = course.isFree

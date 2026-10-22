@@ -1,4 +1,3 @@
-import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getCurrentDictionary } from "@/lib/i18n-server";
@@ -11,7 +10,7 @@ import { IconChevronRight } from "@/components/icons";
 export async function generateMetadata(): Promise<Metadata> {
   const { dict } = await getCurrentDictionary();
   return {
-    title: `Dasbor Siswa — ${dict.common.appName}`,
+    title: `Dasbor Siswa | ${dict.common.appName}`,
     description: dict.dashboard.subtitle,
   };
 }

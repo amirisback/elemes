@@ -124,6 +124,8 @@ export interface StudentDashboard {
   upcomingDeadlines: {
     id: string;
     title: string;
+    courseId: string;
+    lessonId?: string;
     courseTitle: string;
     dueDate: string;
     type: "Kuis" | "Tugas" | "Proyek Akhir";
@@ -777,6 +779,8 @@ export const MOCK_STUDENT_DASHBOARD: StudentDashboard = {
     {
       id: "dl-1",
       title: "Kuis Modul 1: Server Components Mental Model",
+      courseId: "elemes-next16-fullstack",
+      lessonId: "les-1-1",
       courseTitle: "Mastering Next.js 16 & React 19",
       dueDate: "Besok, 23:59 WIB",
       type: "Kuis",
@@ -784,6 +788,8 @@ export const MOCK_STUDENT_DASHBOARD: StudentDashboard = {
     {
       id: "dl-2",
       title: "Proyek Mini: Redesign Token Desain Mobile",
+      courseId: "elemes-uiux-system",
+      lessonId: "les-ds-1",
       courseTitle: "Design System Modern: Dari Figma ke Tailwind",
       dueDate: "26 Okt 2026",
       type: "Proyek Akhir",

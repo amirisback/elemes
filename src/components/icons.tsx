@@ -1,6 +1,6 @@
-import React from "react";
+import type { SVGProps } from "react";
 
-export function IconGraduationCap(props: React.SVGProps<SVGSVGElement>) {
+export function IconGraduationCap(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
@@ -10,7 +10,7 @@ export function IconGraduationCap(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconSearch(props: React.SVGProps<SVGSVGElement>) {
+export function IconSearch(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <circle cx="11" cy="11" r="8" />
@@ -19,7 +19,7 @@ export function IconSearch(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconPlay(props: React.SVGProps<SVGSVGElement>) {
+export function IconPlay(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <polygon points="6 3 20 12 6 21 6 3" />
@@ -27,7 +27,7 @@ export function IconPlay(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconClock(props: React.SVGProps<SVGSVGElement>) {
+export function IconClock(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <circle cx="12" cy="12" r="10" />
@@ -36,7 +36,7 @@ export function IconClock(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconBookOpen(props: React.SVGProps<SVGSVGElement>) {
+export function IconBookOpen(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
@@ -45,7 +45,7 @@ export function IconBookOpen(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconUsers(props: React.SVGProps<SVGSVGElement>) {
+export function IconUsers(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -56,7 +56,7 @@ export function IconUsers(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconStar(props: React.SVGProps<SVGSVGElement>) {
+export function IconStar(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -64,7 +64,7 @@ export function IconStar(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconCheckCircle(props: React.SVGProps<SVGSVGElement>) {
+export function IconCheckCircle(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
@@ -73,7 +73,7 @@ export function IconCheckCircle(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconAward(props: React.SVGProps<SVGSVGElement>) {
+export function IconAward(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <circle cx="12" cy="8" r="6" />
@@ -82,7 +82,7 @@ export function IconAward(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconCode(props: React.SVGProps<SVGSVGElement>) {
+export function IconCode(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <polyline points="16 18 22 12 16 6" />
@@ -91,7 +91,7 @@ export function IconCode(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconSparkles(props: React.SVGProps<SVGSVGElement>) {
+export function IconSparkles(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z" />
@@ -99,7 +99,7 @@ export function IconSparkles(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconChevronRight(props: React.SVGProps<SVGSVGElement>) {
+export function IconChevronRight(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="m9 18 6-6-6-6" />
@@ -107,7 +107,7 @@ export function IconChevronRight(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconChevronLeft(props: React.SVGProps<SVGSVGElement>) {
+export function IconChevronLeft(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="m15 18-6-6 6-6" />
@@ -115,7 +115,7 @@ export function IconChevronLeft(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconChevronDown(props: React.SVGProps<SVGSVGElement>) {
+export function IconChevronDown(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="m6 9 6 6 6-6" />
@@ -123,7 +123,7 @@ export function IconChevronDown(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconMenu(props: React.SVGProps<SVGSVGElement>) {
+export function IconMenu(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <line x1="4" x2="20" y1="12" y2="12" />
@@ -133,7 +133,7 @@ export function IconMenu(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconX(props: React.SVGProps<SVGSVGElement>) {
+export function IconX(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M18 6 6 18" />
@@ -142,7 +142,7 @@ export function IconX(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconLayers(props: React.SVGProps<SVGSVGElement>) {
+export function IconLayers(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <polygon points="12 2 2 7 12 12 22 7 12 2" />
@@ -152,7 +152,7 @@ export function IconLayers(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconShield(props: React.SVGProps<SVGSVGElement>) {
+export function IconShield(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
@@ -160,7 +160,7 @@ export function IconShield(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconFileText(props: React.SVGProps<SVGSVGElement>) {
+export function IconFileText(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
@@ -172,7 +172,7 @@ export function IconFileText(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconMessageSquare(props: React.SVGProps<SVGSVGElement>) {
+export function IconMessageSquare(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -180,7 +180,7 @@ export function IconMessageSquare(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconDownload(props: React.SVGProps<SVGSVGElement>) {
+export function IconDownload(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -190,7 +190,7 @@ export function IconDownload(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconCheck(props: React.SVGProps<SVGSVGElement>) {
+export function IconCheck(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <polyline points="20 6 9 17 4 12" />

@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { getCurrentDictionary } from "@/lib/i18n-server";
 import { Navbar } from "@/components/navbar";

@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: process.env.NEXT_PUBLIC_APP_NAME || 'Elemes LMS',
     short_name: 'ElemesLMS',
-    description: 'Elemes LMS — Universal Learning Management System Progressive Web App',
+    description: 'Elemes LMS: Universal Learning Management System Progressive Web App',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

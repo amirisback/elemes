@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { CourseModule } from "@/data/lms-data";
 import {
@@ -17,9 +17,10 @@ interface CurriculumAccordionProps {
 }
 
 export function CurriculumAccordion({ courseId, modules }: CurriculumAccordionProps) {
-  // First module open by default
-  const [openModuleIds, setOpenModuleIds] = useState<Record<string, boolean>>({
-    [modules[0]?.id || ""]: true,
+  // First module open by default if available
+  const [openModuleIds, setOpenModuleIds] = useState<Record<string, boolean>>(() => {
+    const firstId = modules[0]?.id;
+    return firstId ? { [firstId]: true } : {};
   });
 
   const toggleModule = (id: string) => {

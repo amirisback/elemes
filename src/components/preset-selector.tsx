@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { LMS_PRESETS } from "@/data/lms-data";
 import { IconCheckCircle, IconGraduationCap, IconShield, IconAward, IconUsers } from "./icons";
 

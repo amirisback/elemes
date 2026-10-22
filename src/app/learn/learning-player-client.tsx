@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Course, Lesson } from "@/data/lms-data";
 import {
@@ -23,6 +23,15 @@ interface LearningPlayerClientProps {
   initialLessonId: string;
 }
 
+const FALLBACK_LESSON: Lesson = {
+  id: "les-intro",
+  title: "Pengantar Materi",
+  duration: "10:00",
+  durationMinutes: 10,
+  isPreview: true,
+  summary: "Selamat datang di ruang pembelajaran interaktif.",
+};
+
 export function LearningPlayerClient({
   course,
   initialLessonId,
@@ -34,17 +43,17 @@ export function LearningPlayerClient({
     allLessons.findIndex((l) => l.id === initialLessonId)
   );
 
-  const [currentLesson, setCurrentLesson] = useState<Lesson>(
-    allLessons[activeLessonIndex] || allLessons[0]!
-  );
+  const initialLesson = allLessons[activeLessonIndex] || allLessons[0] || FALLBACK_LESSON;
+  const [currentLesson, setCurrentLesson] = useState<Lesson>(initialLesson);
   const [completedLessonIds, setCompletedLessonIds] = useState<Record<string, boolean>>({
-    [allLessons[0]?.id || ""]: true,
+    [initialLesson.id]: true,
   });
 
   const [activeTab, setActiveTab] = useState<"overview" | "resources" | "discussion" | "quiz">("overview");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState<string>("1.0x");
+  const [downloadedResId, setDownloadedResId] = useState<string | null>(null);
 
   // Discussion state
   const [discussionQuestions, setDiscussionQuestions] = useState<Array<{ id: string; author: string; time: string; text: string }>>([
@@ -373,11 +382,27 @@ export function LearningPlayerClient({
 
                         <button
                           type="button"
-                          onClick={() => alert(`Mengunduh berkas: ${res.title}`)}
-                          className="inline-flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5 font-semibold text-foreground hover:bg-muted transition-colors cursor-pointer"
+                          onClick={() => {
+                            setDownloadedResId(res.id);
+                            setTimeout(() => setDownloadedResId(null), 2500);
+                          }}
+                          className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold text-xs transition-colors cursor-pointer ${
+                            downloadedResId === res.id
+                              ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
+                              : "bg-secondary text-foreground hover:bg-muted"
+                          }`}
                         >
-                          <IconDownload className="h-3.5 w-3.5" />
-                          <span>Unduh</span>
+                          {downloadedResId === res.id ? (
+                            <>
+                              <IconCheck className="h-3.5 w-3.5" />
+                              <span>Tersimpan</span>
+                            </>
+                          ) : (
+                            <>
+                              <IconDownload className="h-3.5 w-3.5" />
+                              <span>Unduh</span>
+                            </>
+                          )}
                         </button>
                       </div>
                     ))
@@ -537,25 +562,20 @@ export function LearningPlayerClient({
                     const isCompleted = Boolean(completedLessonIds[lesson.id]);
 
                     return (
-                      <button
+                      <div
                         key={lesson.id}
-                        type="button"
-                        onClick={() => handleSelectLesson(lesson)}
-                        className={`flex w-full items-center justify-between rounded-xl p-2.5 text-left text-xs transition-colors cursor-pointer ${
+                        className={`flex w-full items-center justify-between rounded-xl p-2.5 text-xs transition-colors ${
                           isActive
                             ? "bg-primary text-primary-foreground font-semibold shadow-xs"
                             : "hover:bg-muted text-foreground"
                         }`}
                       >
-                        <div className="flex items-center gap-2.5 truncate pr-2">
+                        <div className="flex items-center gap-2.5 truncate pr-2 flex-1">
                           <button
                             type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleToggleComplete(lesson.id);
-                            }}
-                            className="focus:outline-none"
-                            aria-label="Tandai status pelajaran"
+                            onClick={() => handleToggleComplete(lesson.id)}
+                            className="focus:outline-none cursor-pointer p-0.5"
+                            aria-label={`Tandai status ${lesson.title}`}
                           >
                             {isCompleted ? (
                               <IconCheckCircle
@@ -571,7 +591,13 @@ export function LearningPlayerClient({
                               />
                             )}
                           </button>
-                          <span className="truncate">{lesson.title}</span>
+                          <button
+                            type="button"
+                            onClick={() => handleSelectLesson(lesson)}
+                            className="truncate text-left flex-1 focus:outline-none cursor-pointer"
+                          >
+                            <span className="truncate">{lesson.title}</span>
+                          </button>
                         </div>
 
                         <span
@@ -581,7 +607,7 @@ export function LearningPlayerClient({
                         >
                           {lesson.duration}
                         </span>
-                      </button>
+                      </div>
                     );
                   })}
                 </div>

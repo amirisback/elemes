@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { IconGraduationCap, IconShield, IconAward, IconBookOpen } from "./icons";
 import { ThemeSwitcher } from "@/app/_components/theme-switcher";
@@ -101,12 +100,8 @@ export function Footer({ dict, locale }: FooterProps) {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-border text-xs text-muted-foreground">
           <p>{copyrightText}</p>
           <div className="flex items-center gap-6">
-            <span className="hover:text-foreground cursor-pointer transition-colors">
-              {dict.footer.privacy}
-            </span>
-            <span className="hover:text-foreground cursor-pointer transition-colors">
-              {dict.footer.terms}
-            </span>
+            <span>{dict.footer.privacy}</span>
+            <span>{dict.footer.terms}</span>
             <span className="text-muted-foreground/60">{dict.footer.madeWith}</span>
           </div>
         </div>

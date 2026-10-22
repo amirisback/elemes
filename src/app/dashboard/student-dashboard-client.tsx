@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { StudentDashboard, Course } from "@/data/lms-data";
@@ -10,6 +10,7 @@ import {
   IconClock,
   IconSparkles,
   IconPlay,
+  IconCheckCircle,
 } from "@/components/icons";
 
 interface StudentDashboardClientProps {
@@ -40,6 +41,7 @@ export function StudentDashboardClient({
   dict,
 }: StudentDashboardClientProps) {
   const [activeTab, setActiveTab] = useState<"active" | "completed" | "deadlines">("active");
+  const [verifiedCertId, setVerifiedCertId] = useState<string | null>(null);
 
   const enrolledCourseDetails = data.enrolledCourses.map((enrolled) => {
     const course = allCourses.find((c) => c.id === enrolled.courseId);
@@ -282,14 +284,21 @@ export function StudentDashboardClient({
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 self-end sm:self-auto">
-                  <button
-                    type="button"
-                    onClick={() => alert(`Sertifikat Resmi ${cert.credentialId} berhasil diverifikasi!`)}
-                    className="rounded-xl border border-border bg-background px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted transition-colors cursor-pointer"
-                  >
-                    Verifikasi Sertifikat
-                  </button>
+                <div className="flex flex-col sm:flex-row items-end sm:items-center gap-2 self-end sm:self-auto">
+                  {verifiedCertId === cert.id ? (
+                    <span className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                      <IconCheckCircle className="h-4 w-4" />
+                      Terverifikasi Valid
+                    </span>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setVerifiedCertId(cert.id)}
+                      className="rounded-xl border border-border bg-background px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted transition-colors cursor-pointer"
+                    >
+                      Verifikasi Sertifikat
+                    </button>
+                  )}
                   <Link
                     href={`/courses/detail?id=${cert.courseId}`}
                     className="rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary-hover transition-colors"
@@ -325,7 +334,7 @@ export function StudentDashboardClient({
                       Batas: {dl.dueDate}
                     </span>
                     <Link
-                      href="/learn?courseId=elemes-next16-fullstack&lessonId=les-1-1"
+                      href={`/learn?courseId=${dl.courseId}&lessonId=${dl.lessonId || "les-1-1"}`}
                       className="rounded-lg bg-secondary px-3 py-1 font-semibold text-foreground hover:bg-muted transition-colors"
                     >
                       Kerjakan

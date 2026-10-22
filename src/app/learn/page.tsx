@@ -1,5 +1,6 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { LMS_COURSES } from "@/data/lms-data";
 import { LearningPlayerClient } from "./learning-player-client";
 
@@ -9,9 +10,14 @@ interface PageProps {
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const { courseId } = await searchParams;
-  const course = LMS_COURSES.find((c) => c.id === courseId) || LMS_COURSES[0]!;
+  const course = courseId ? LMS_COURSES.find((c) => c.id === courseId) : LMS_COURSES[0];
+  if (!course) {
+    return {
+      title: "Ruang Belajar: Tidak Ditemukan | Elemes LMS",
+    };
+  }
   return {
-    title: `Ruang Belajar: ${course.title} — Elemes LMS`,
+    title: `Ruang Belajar: ${course.title} | Elemes LMS`,
     description: `Pelajari materi ${course.title} secara interaktif di Elemes LMS.`,
   };
 }
@@ -19,7 +25,10 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 export default async function LearnPage({ searchParams }: PageProps) {
   const { courseId, lessonId } = await searchParams;
 
-  const course = LMS_COURSES.find((c) => c.id === courseId) || LMS_COURSES[0]!;
+  const course = courseId ? LMS_COURSES.find((c) => c.id === courseId) : LMS_COURSES[0];
+  if (!course) {
+    notFound();
+  }
   const activeLessonId =
     lessonId || course.modules[0]?.lessons[0]?.id || "les-1-1";
 

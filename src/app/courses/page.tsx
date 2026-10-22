@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getCurrentDictionary } from "@/lib/i18n-server";
@@ -11,7 +11,7 @@ import { IconChevronRight } from "@/components/icons";
 export async function generateMetadata(): Promise<Metadata> {
   const { dict } = await getCurrentDictionary();
   return {
-    title: `${dict.courses.title} — ${dict.common.appName}`,
+    title: `${dict.courses.title} | ${dict.common.appName}`,
     description: dict.courses.subtitle,
   };
 }

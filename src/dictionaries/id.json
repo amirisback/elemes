@@ -109,7 +109,7 @@
     "instructorTitle": "Tentang Instruktur",
     "reviewsTitle": "Ulasan & Testimoni Pelajar",
     "enrollFree": "Daftar Gratis Sekarang",
-    "enrollPaid": "Ikuti Kursus — {price}",
+    "enrollPaid": "Ikuti Kursus: {price}",
     "previewButton": "Tonton Pratinjau Gratis",
     "courseIncludes": "Fasilitas Kursus",
     "includesAccess": "Akses materi selamanya",
@@ -152,7 +152,7 @@
     "emptyDeadlines": "Tidak ada tugas atau kuis yang tertunda. Kerja bagus!"
   },
   "metadata": {
-    "title": "Elemes LMS — Template Learning Management System Modern",
+    "title": "Elemes LMS | Template Learning Management System Modern",
     "description": "Template Learning Management System serbaguna berkinerja tinggi untuk institusi kampus, bootcamp, corporate training, dan kursus mandiri."
   },
   "error": {

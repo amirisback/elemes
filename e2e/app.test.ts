@@ -183,5 +183,90 @@ describe("E2E Application Workflow Test Suite", () => {
       expect(meta.openGraph).toBeDefined();
       expect(meta.twitter).toBeDefined();
     });
+
+    it("should include dynamic courses in sitemap entries", () => {
+      const sitemapData = sitemap();
+      const courseEntries = sitemapData.filter((entry) => entry.url.includes("/courses/detail?id="));
+      expect(courseEntries.length).toBeGreaterThanOrEqual(5);
+    });
+  });
+
+  describe("E2E LMS Course Data & Schema Integrity", () => {
+    it("should ensure every course has valid modules, lessons, and metadata", async () => {
+      const { LMS_COURSES, LMS_CATEGORIES } = await import("@/data/lms-data");
+      expect(LMS_COURSES.length).toBeGreaterThan(0);
+      expect(LMS_CATEGORIES.length).toBeGreaterThan(0);
+
+      for (const course of LMS_COURSES) {
+        expect(course.id).toBeDefined();
+        expect(course.title.length).toBeGreaterThan(5);
+        expect(course.modules.length).toBeGreaterThan(0);
+        expect(course.instructor).toBeDefined();
+        expect(course.instructor.name).toBeDefined();
+
+        for (const mod of course.modules) {
+          expect(mod.lessons.length).toBeGreaterThan(0);
+          for (const lesson of mod.lessons) {
+            expect(lesson.id).toBeDefined();
+            expect(lesson.title).toBeDefined();
+            expect(lesson.durationMinutes).toBeGreaterThan(0);
+          }
+        }
+      }
+    });
+
+    it("should verify upcoming deadlines link to actual courses", async () => {
+      const { MOCK_STUDENT_DASHBOARD, LMS_COURSES } = await import("@/data/lms-data");
+      for (const dl of MOCK_STUDENT_DASHBOARD.upcomingDeadlines) {
+        expect(dl.courseId).toBeDefined();
+        const course = LMS_COURSES.find((c) => c.id === dl.courseId);
+        expect(course).toBeDefined();
+      }
+    });
+  });
+
+  describe("E2E Course Detail & Learning Route Resolution", () => {
+    it("should generate course detail metadata without em dashes", async () => {
+      const { generateMetadata: generateCourseDetailMetadata } = await import("@/app/courses/detail/page");
+      const meta = await generateCourseDetailMetadata({
+        searchParams: Promise.resolve({ id: "elemes-next16-fullstack" }),
+      });
+      expect(meta.title).toContain("Elemes LMS");
+      expect(meta.title).not.toContain("—");
+    });
+
+    it("should return not found title when course id does not exist", async () => {
+      const { generateMetadata: generateCourseDetailMetadata } = await import("@/app/courses/detail/page");
+      const meta = await generateCourseDetailMetadata({
+        searchParams: Promise.resolve({ id: "nonexistent-course-999" }),
+      });
+      expect(meta.title).toContain("Tidak Ditemukan");
+    });
+
+    it("should generate learning room metadata cleanly", async () => {
+      const { generateMetadata: generateLearnMetadata } = await import("@/app/learn/page");
+      const meta = await generateLearnMetadata({
+        searchParams: Promise.resolve({ courseId: "elemes-next16-fullstack" }),
+      });
+      expect(meta.title).toContain("Ruang Belajar:");
+      expect(meta.title).not.toContain("—");
+    });
+  });
+
+  describe("E2E Typography & Antislop Compliance", () => {
+    it("should ensure manifest description contains no em dashes", () => {
+      const manifestData = manifest();
+      expect(manifestData.description).not.toContain("—");
+    });
+
+    it("should ensure dictionary titles contain no em dashes", async () => {
+      const idDict = await import("@/dictionaries/id.json");
+      const enDict = await import("@/dictionaries/en.json");
+
+      expect(idDict.metadata.title).not.toContain("—");
+      expect(enDict.metadata.title).not.toContain("—");
+      expect(idDict.courseDetail.enrollPaid).not.toContain("—");
+      expect(enDict.courseDetail.enrollPaid).not.toContain("—");
+    });
   });
 });

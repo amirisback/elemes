@@ -109,7 +109,7 @@
     "instructorTitle": "About the Instructor",
     "reviewsTitle": "Student Reviews & Testimonials",
     "enrollFree": "Enroll for Free",
-    "enrollPaid": "Enroll in Course — {price}",
+    "enrollPaid": "Enroll in Course: {price}",
     "previewButton": "Watch Free Preview",
     "courseIncludes": "Course Includes",
     "includesAccess": "Full lifetime access",
@@ -152,7 +152,7 @@
     "emptyDeadlines": "No pending assignments or quizzes. Great job!"
   },
   "metadata": {
-    "title": "Elemes LMS — Modern Learning Management System Template",
+    "title": "Elemes LMS | Modern Learning Management System Template",
     "description": "High-performance, modular Learning Management System template for universities, bootcamps, corporate academies, and independent educators."
   },
   "error": {

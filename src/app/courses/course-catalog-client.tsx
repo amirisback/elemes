@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { Course, Category } from "@/data/lms-data";
 import { CourseCard } from "@/components/course-card";
@@ -67,7 +67,11 @@ export function CourseCatalogClient({
 
         // Level filter
         if (selectedLevel !== "all") {
-          if (course.level !== selectedLevel) return false;
+          const lvl = selectedLevel.toLowerCase();
+          const matchLevel =
+            course.level.toLowerCase() === lvl ||
+            course.levelEn.toLowerCase() === lvl;
+          if (!matchLevel) return false;
         }
 
         // Price filter
